@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME    =   minishell
-HEADER  =   minishell.h
+HEADER  =   includes/minishell.h
 
 FLDR_S  =   srcs/
 FLDR_O  =   objs/

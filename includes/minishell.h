@@ -17,14 +17,27 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+
+struct	s_env_raw
+{
+	char	*path;
+	char	**main;
+};
+
+struct	s_env
+{
+	char	**path;
+};
+
 typedef struct s_shell
 {
 	char	*expression;
 	int 	argc;
 	char	**argv;
-	char	**env;
 	int 	process_count;
 	pid_t	*processes_id;
+	struct s_env_raw	env_raw;
+	struct s_env		env;
 }				t_shell;
 
 int	minishell_prepare(t_shell *shell, int argc, char *argv[], char *env[]);

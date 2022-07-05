@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 int	minishell_prepare(t_shell *shell, int argc, char *argv[], char *env[])
 {
 	shell->expression = NULL;
 	shell->argc = argc;
 	shell->argv = argv;
-	shell->env = env;
+	shell->env_raw.main = env;
 	shell->process_count = 0;
 	shell->processes_id = NULL;
 	return (0);
