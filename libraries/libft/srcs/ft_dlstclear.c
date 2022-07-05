@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dlstclear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2022/01/18 19:59:33 by alcierra          #+#    #+#             */
+/*   Updated: 2022/03/12 17:07:23 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char *argv[], char *env[])
+void	ft_dlstclear(t_dlist **dlst, void (*del)(void*))
 {
-	t_shell	s;
+	t_dlist	*curr;
+	t_dlist	*next;
 
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	if (*dlst)
+		return ;
+	curr = *dlst;
+	while (curr && curr->prev)
+		curr = curr->prev;
+	while (curr)
+	{
+		next = curr->next;
+		if (del)
+			(*del)(curr->content);
+		free(curr);
+		curr = next;
+	}
+	*dlst = NULL;
 }

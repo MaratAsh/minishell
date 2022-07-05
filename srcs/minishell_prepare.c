@@ -20,5 +20,6 @@ int	minishell_prepare(t_shell *shell, int argc, char *argv[], char *env[])
 	shell->env_raw.main = env;
 	shell->process_count = 0;
 	shell->processes_id = NULL;
+	string_init(&(shell->welcome_message), "mini-shell $ ");
 	return (0);
 }

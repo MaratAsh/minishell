@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2021/10/05 16:55:02 by alcierra          #+#    #+#             */
+/*   Updated: 2022/03/04 18:01:43 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char *argv[], char *env[])
+char	*ft_strrchr(const char *s, int c)
 {
-	t_shell	s;
+	char	*ptr;
+	int		i;
+	int		len;
 
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	len = ft_strlen((char *) s);
+	if (c == 0)
+		return ((char *) s + len);
+	ptr = (void *) 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			ptr = (char *) s + i;
+		i++;
+	}
+	return (ptr);
 }

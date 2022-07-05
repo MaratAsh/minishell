@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2021/10/08 16:53:10 by alcierra          #+#    #+#             */
+/*   Updated: 2022/03/04 18:07:06 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char *argv[], char *env[])
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_shell	s;
+	char			*str;
+	unsigned int	i;
 
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	if (!s)
+		return (NULL);
+	str = (char *) malloc(sizeof(char) * (ft_strlen((char *) s) + 1));
+	if (str == NULL)
+		return (str);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	str[i] = 0;
+	return (str);
 }

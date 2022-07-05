@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dlstlast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2022/01/18 18:38:23 by alcierra          #+#    #+#             */
+/*   Updated: 2022/03/10 19:41:34 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char *argv[], char *env[])
+t_dlist	*ft_dlstlast(t_dlist *dlst)
 {
-	t_shell	s;
-
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	while (dlst && dlst->next)
+		dlst = dlst->next;
+	return (dlst);
 }

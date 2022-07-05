@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2021/10/05 14:28:28 by alcierra          #+#    #+#             */
+/*   Updated: 2022/03/04 18:03:01 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char *argv[], char *env[])
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_shell	s;
+	void	*arr;
 
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	if (count < 1 || size < 1)
+	{
+		count = 1;
+		size = 1;
+	}
+	arr = malloc(count * size);
+	if (!arr)
+		return (NULL);
+	ft_bzero(arr, size * count);
+	return (arr);
 }

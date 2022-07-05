@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2021/10/05 16:04:22 by alcierra          #+#    #+#             */
+/*   Updated: 2022/03/04 17:58:41 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char *argv[], char *env[])
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_shell	s;
+	size_t	i;
 
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	i = 0;
+	if (size == 0)
+		return (ft_strlen((char *) src));
+	while (src[i])
+	{
+		if (i == size - 1)
+			break ;
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = 0;
+	return (ft_strlen((char *) src));
 }

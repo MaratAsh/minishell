@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dlstsize_full.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2022/01/18 18:29:48 by alcierra          #+#    #+#             */
+/*   Updated: 2022/03/10 19:41:44 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char *argv[], char *env[])
+size_t	ft_dlstsize_full(t_dlist *dlst)
 {
-	t_shell	s;
+	size_t	i;
 
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	while (dlst && dlst->prev)
+		dlst = dlst->prev;
+	i = 1;
+	if (!dlst)
+		return (0);
+	while (dlst && dlst->next)
+	{
+		dlst = dlst->next;
+		++i;
+	}
+	return (i);
 }

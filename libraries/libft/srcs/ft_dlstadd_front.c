@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dlstadd_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2022/01/18 18:19:57 by alcierra          #+#    #+#             */
+/*   Updated: 2022/03/10 19:41:11 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char *argv[], char *env[])
+void	ft_dlstadd_front(t_dlist **lst, t_dlist *new_elem)
 {
-	t_shell	s;
-
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	new_elem->next = *lst;
+	new_elem->next->prev = new_elem;
+	*lst = new_elem;
 }

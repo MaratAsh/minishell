@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alcierra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2021/10/05 16:45:39 by alcierra          #+#    #+#             */
+/*   Updated: 2021/10/08 13:39:37 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
-
-int	main(int argc, char *argv[], char *env[])
+char	*ft_strchr(const char *s, int c)
 {
-	t_shell	s;
+	int	i;
 
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	i = 0;
+	while (s[i] != c && s[i] != 0)
+		i++;
+	if (s[i] || c == 0)
+		return ((char *)s + i);
+	return ((void *) 0);
 }

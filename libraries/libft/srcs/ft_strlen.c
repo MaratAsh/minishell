@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alcierra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2021/10/05 14:14:04 by alcierra          #+#    #+#             */
+/*   Updated: 2021/10/06 12:05:08 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+typedef unsigned long	t_size;
 
-int	main(int argc, char *argv[], char *env[])
+t_size	ft_strlen(char *s)
 {
-	t_shell	s;
+	t_size	sz;
 
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	if (s == (void *) 0)
+		return (0);
+	sz = 0;
+	while (s[sz])
+		sz++;
+	return (sz);
 }

@@ -14,8 +14,13 @@
 
 int	minishell_start(t_shell *shell)
 {
-	(void) shell;
+	char	*str;
+
 	while (1)
-		;
+	{
+		string_put_fd(&(shell->welcome_message), 1);
+		str = readline(NULL);
+		free(str);
+	}
 	return (0);
 }

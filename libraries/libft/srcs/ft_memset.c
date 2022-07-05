@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alcierra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2021/10/05 14:21:06 by alcierra          #+#    #+#             */
+/*   Updated: 2021/10/06 16:39:02 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+typedef unsigned long	t_size;
 
-int	main(int argc, char *argv[], char *env[])
+void	*ft_memset(void *b, int c, t_size len)
 {
-	t_shell	s;
+	unsigned char	*temp;
 
-	minishell_prepare(&s, argc, argv, env);
-	minishell_start(&s);
-	return (0);
+	temp = (unsigned char *) b;
+	while (len)
+	{
+		temp[len - 1] = (unsigned char) c;
+		len--;
+	}
+	return (b);
 }

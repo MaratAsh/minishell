@@ -13,6 +13,9 @@
 NAME    =   minishell
 HEADER  =   includes/minishell.h
 
+INCLUDE	=	./libraries/libft/libft.a
+I_MAKE	=	make -C $(dir $(INCLUDE))
+
 FLDR_S  =   srcs/
 FLDR_O  =   objs/
 
@@ -30,13 +33,19 @@ all: $(FLDR_O) $(NAME)
 $(FLDR_O):
 		mkdir $(FLDR_O)
 
-$(NAME): ${FLDR_O}main.o ${OBJS_WD} ${HEADER}
-		${CC} ${FLAGS} $(OBJS_WD) ${FLDR_O}main.o -o $(NAME)
+lib:
+		${I_MAKE} bonus
+		${I_MAKE}
+
+$(NAME): ${FLDR_O}main.o ${OBJS_WD} ${HEADER} lib
+		${CC} ${FLAGS} $(OBJS_WD) ${FLDR_O}main.o -I. $(INCLUDE) -o $(NAME)
 
 clean:
+		${I_MAKE} clean
 		rm -rf ${FLDR_O}main.o ${OBJS_WD} ${OBJS_B_WD}
 
 fclean:
+		${I_MAKE} fclean
 		rm -rf ${FLDR_O}main.o ${OBJS_WD} ${OBJS_B_WD} ${NAME} ${NAME_B}
 
 ${FLDR_O}%.o : ${FLDR_S}%.c ${HEADER}

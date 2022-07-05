@@ -16,7 +16,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft.h"
 
+# include <readline/readline.h>
 
 struct	s_env_raw
 {
@@ -31,6 +33,8 @@ struct	s_env
 
 typedef struct s_shell
 {
+	t_string welcome_message;
+	char	*destination;
 	char	*expression;
 	int 	argc;
 	char	**argv;
