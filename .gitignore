@@ -1,5 +1,7 @@
 *.o
+*.a
 cmake-build-debug
+cmake-build-release
 .idea
 objs
 minishell
