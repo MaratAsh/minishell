@@ -32,6 +32,9 @@ int	main(int argc, char *argv[], char *env[])
 		if (!tokens)
 			write(2, "command parse error\n", 20);
 		executor(tokens, &app);
+		ft_memset(user_input, 0, ft_strlen(user_input));
+		free(user_input);
+		free_token(tokens);
 	}
 	return (0);
 }
