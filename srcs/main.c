@@ -17,7 +17,7 @@ int	main(int argc, char *argv[], char *env[])
 	t_app	app;
 	char	*user_input;
 	t_token	*tokens;
-	int 	ret;
+	int		ret;
 
 	ret = init_app(&app, argc, argv, env);
 	if (ret)
@@ -26,9 +26,11 @@ int	main(int argc, char *argv[], char *env[])
 	{
 		ft_putendl_fd("mini-shell $ ", 1);
 		user_input = readline(NULL);
+		if (!user_input || *user_input == 0)
+			continue ;
 		tokens = parser(user_input, &app);
 		if (!tokens)
-			exit_alert("command parse error", ERROR_COMMAND_PARSE);
+			write(2, "command parse error\n", 20);
 		executor(tokens, &app);
 	}
 	return (0);
