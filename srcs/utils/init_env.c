@@ -1,32 +1,64 @@
-#include "libft.h"
+#include "minishell.h"
+
+static t_dlist	*convert_env(char *old_env)
+{
+	char				*tmp;
+	struct s_env_item	*item;
+	t_dlist				*dlist;
+
+	tmp = ft_strchr((const char *) old_env, (int) '=');
+	if (!tmp)
+		return (NULL);
+	*tmp = 0;
+	tmp++;
+	tmp = ft_strdup((const char *) tmp);
+	if (!tmp)
+		return (NULL);
+	item = malloc(sizeof(struct s_env_item));
+	if (!item)
+	{
+		free(tmp);
+		return (NULL);
+	}
+	item->value = tmp;
+	item->key = ft_strdup((const char *) old_env);
+	if (!item->key)
+	{
+		free(tmp);
+		free(item);
+		return (NULL);
+	}
+	dlist = ft_dlstnew(item);
+	if (!dlist)
+	{
+		free(item->key);
+		free(item->value);
+		free(item);
+		return (NULL);
+	}
+	return (dlist);
+}
 
 t_dlist	*init_env(char **old_env)
 {
-	t_dlist	*new_env;
+	t_dlist	*head;
+	t_dlist	*prev_env;
 	t_dlist	*tmp_dlist;
-	char	*tmp_str;
 	int		i;
 
-	tmp_str = ft_strdup(old_env[0]);
-	if (!tmp_str)
-		return (NULL);
-	new_env = ft_dlstnew(tmp_str);
-	if (!new_env)
-		return (NULL);
-
 	i = 1;
+	head = NULL;
 	while (old_env[i])
 	{
-		tmp_str = ft_strdup(old_env[i]);
-		if (!tmp_str)
-			return (NULL);
-		tmp_dlist = ft_dlstnew(tmp_str);
+		tmp_dlist = convert_env(old_env[i]);
 		if (!tmp_dlist)
 			return (NULL);
-		ft_dlstadd_after(new_env, tmp_dlist);
-		new_env = new_env->next;
+		if (!head)
+			head = tmp_dlist;
+		else
+			ft_dlstadd_after(prev_env, tmp_dlist);
+		prev_env = tmp_dlist;
 		i++;
 	}
-	new_env = ft_dlstfirst(new_env);
-	return (new_env);
+	return (head);
 }
