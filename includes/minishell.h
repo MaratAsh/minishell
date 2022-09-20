@@ -72,6 +72,12 @@ typedef struct s_app
 	t_dlist	*env;
 }				t_app;
 
+struct s_env_item
+{
+	char 	*key;
+	char	*value;
+};
+
 # define ERROR_APP_INIT 1
 # define ERROR_ENV_INIT 2
 # define ERROR_COMMAND_PARSE 3
@@ -103,5 +109,7 @@ t_dlist		*init_env(char **old_env);
 int			init_app(t_app *app, int argc, char **argv, char **env);
 void		exit_alert(char *message, int code);
 int			free_token(t_token *tkn);
+
+int	env_edit(t_dlist *app, char *key, char *value);
 
 #endif

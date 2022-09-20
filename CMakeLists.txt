@@ -11,7 +11,7 @@ add_library(ft STATIC ${LIBFT_SRCS})
 
 
 file(GLOB MINISHELL_PARSER "srcs/parser/*.c")
-file(GLOB MINISHELL_EXECUTOR "srcs/executor/*.c")
+file(GLOB MINISHELL_EXECUTOR "srcs/executor/*.c" "srcs/executor/built-in/*.c")
 file(GLOB MINISHELL_UTILS "srcs/utils/*.c")
 add_executable(minishell
 		${MINISHELL_PARSER}
