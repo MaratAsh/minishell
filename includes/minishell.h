@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
-#define MINISHELL_H
+# define MINISHELL_H
 
 # include "libft.h"
 
@@ -20,7 +20,6 @@
 # include <unistd.h>
 
 # include <readline/readline.h>
-
 
 # define MAXARGS 100
 
@@ -62,20 +61,19 @@ typedef struct s_token_back {
 	t_token	*token;
 }			t_tkn_back;
 
-
 typedef struct s_app
 {
-	t_list	*command_list;
-	char	*user_input;
-	int		exit_status;
-	t_token	*current;
-	t_dlist	*env;
+	t_list		*command_list;
+	char		*user_input;
+	int			exit_status;
+	t_token		*current;
+	t_dlist		*env;
 	t_string	welcome_message;
-}				t_app;
+}			t_app;
 
 struct s_env_item
 {
-	char 	*key;
+	char	*key;
 	char	*value;
 };
 
@@ -89,7 +87,6 @@ struct s_env_item
 # define ERROR_REDIR_FILE_MISSING 8
 # define ERROR_TOO_MANY_ARGS 9
 
-
 # define TOKEN_EXEC 1
 # define TOKEN_REDIR 2
 # define TOKEN_PIPE 3
@@ -97,7 +94,6 @@ struct s_env_item
 # define TOKEN_BACKGROUND 5
 # define TOKEN_SINGLE_Q 6
 # define TOKEN_DOUBLE_Q 7
-
 
 // parser
 t_token		*parser(char *input, t_app *app);
@@ -111,6 +107,7 @@ int			init_app(t_app *app, int argc, char **argv, char **env);
 void		exit_alert(char *message, int code);
 int			free_token(t_token *tkn);
 
-int	env_edit(t_dlist *app, char *key, char *value);
+int			env_edit(t_dlist *app, char *key, char *value);
+int			env_insert(t_dlist **envpp, char *key, char *value);
 
 #endif
