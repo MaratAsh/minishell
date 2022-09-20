@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcierra <alcierra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 00:00:00 by alcierra          #+#    #+#             */
-/*   Updated: 2022/06/28 00:00:00 by alcierra         ###   ########.fr       */
+/*   Created: 2022/09/18 00:00:00 by alcierra          #+#    #+#             */
+/*   Updated: 2022/09/18 00:00:00 by alcierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minishell.h"
 #include "minishell_parser.h"
@@ -19,7 +18,7 @@
  * */
 int	executor(t_token *token, t_app *app)
 {
-	int ret;
+	int	ret;
 
 	if (token->type == TOKEN_EXEC)
 	{
