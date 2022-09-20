@@ -33,7 +33,7 @@ static int	print_env(struct s_env_item *env)
 	sz_tmp = ft_strlcpy(tmp, env->key, sz_key + 1);
 	tmp[sz_tmp] = '=';
 	sz_tmp++;
-	sz_tmp += ft_strlcpy(tmp + sz_tmp, env->value, sz_value);
+	sz_tmp += ft_strlcpy(tmp + sz_tmp, env->value, sz_value + 1);
 	sz_tmp += ft_strlcpy(tmp + sz_tmp, "\n", 2);
 	write(1, tmp, sz_tmp);
 	free(tmp);

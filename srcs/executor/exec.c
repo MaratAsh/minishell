@@ -33,6 +33,7 @@ static t_exec_function	get_built_in_function(char *str)
 	{
 		if (ft_strncmp(str, builtins_name[i], len) == 0)
 			return (builtins_functs[i]);
+		i++;
 	}
 	return (NULL);
 }
