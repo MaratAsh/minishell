@@ -70,7 +70,7 @@ typedef struct s_app
 	int		exit_status;
 	t_token	*current;
 	t_dlist	*env;
-	char	*welcome_message;
+	t_string	welcome_message;
 }				t_app;
 
 struct s_env_item

@@ -37,7 +37,7 @@ int	main(int argc, char *argv[], char *env[])
 		exit_alert("app initialization error", ERROR_APP_INIT);
 	while (1)
 	{
-		ft_putendl_fd(app.welcome_message, 1);
+		string_put_fd(&app.welcome_message, 1);
 		user_input = readline(NULL);
 		ret = minishell(&app, user_input);
 		if (ret == 1)
