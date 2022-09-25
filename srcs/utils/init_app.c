@@ -31,8 +31,9 @@ static void	init_app_params_wmc(t_app *app, char *color)
 
 static int	init_app_params_env(t_app *app, char *key, char *value)
 {
-	char	*nvalue;
-	char	*nkey;
+	char		*nvalue;
+	char		*nkey;
+	t_env_item	*env;
 
 	nvalue = malloc(ft_strlen(value) + 1);
 	if (!nvalue)
@@ -48,6 +49,11 @@ static int	init_app_params_env(t_app *app, char *key, char *value)
 		}
 		env_insert(&app->env, nkey, nvalue);
 	}
+	env = env_get(app->env, "PATH");
+	if (env)
+		app->path = ft_split((const char *) env->value, ':');
+	else
+		app->path = ft_split("/usr/bin:/usr/sbin", ':');
 	return (0);
 }
 
@@ -87,5 +93,6 @@ int	init_app(t_app *app, int argc, char **argv, char **env)
 	if (!app->env)
 		exit_alert("cannot allocate memory\n", ERROR_ENV_INIT);
 	init_app_params_process(app, argc, argv);
+	app->pid = getpid();
 	return (0);
 }

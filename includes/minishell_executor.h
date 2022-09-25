@@ -25,4 +25,7 @@ int	built_in_exit(t_tkn_exec *token, t_app *app);
 
 typedef int	(*t_exec_function)(t_tkn_exec *token, t_app *app);
 
+int	execute_list(t_tkn_list *token, t_app *app);
+int	execute_exec(t_tkn_exec *token, t_app *app);
+
 #endif

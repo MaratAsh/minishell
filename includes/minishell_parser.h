@@ -31,6 +31,4 @@ t_token	*pipe_tkn(t_token *left, t_token *right);
 t_token	*list_tkn(t_token *left, t_token *right);
 t_token *back_tkn(t_token *subtkn);
 
-int	execute_exec(t_tkn_exec *token, t_app *app);
-
 #endif

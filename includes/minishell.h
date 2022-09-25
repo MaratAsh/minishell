@@ -67,15 +67,17 @@ typedef struct s_app
 	char		*user_input;
 	int			exit_status;
 	t_token		*current;
+	char 		**path;
+	pid_t		pid;
 	t_dlist		*env;
 	t_string	welcome_message;
 }			t_app;
 
-struct s_env_item
+typedef struct s_env_item
 {
 	char	*key;
 	char	*value;
-};
+}			t_env_item;
 
 # define ERROR_APP_INIT 1
 # define ERROR_ENV_INIT 2
@@ -109,5 +111,6 @@ int			free_token(t_token *tkn);
 
 int			env_edit(t_dlist *app, char *key, char *value);
 int			env_insert(t_dlist **envpp, char *key, char *value);
+struct s_env_item	*env_get(t_dlist *app, char *key);
 
 #endif

@@ -14,9 +14,8 @@
 #include "minishell_parser.h"
 #include <fcntl.h>
 
-
-char whitespace[] = " \t\r\n\v";
-char symbols[] = "<|>&;()";
+# define WHITESPACES " \t\r\n\v"
+# define SYMBOLS "<|>&;()'"
 
 int	gettoken(char **ps, char *es, char **q, char **eq)
 {
@@ -24,7 +23,7 @@ int	gettoken(char **ps, char *es, char **q, char **eq)
 	int ret;
 
 	s = *ps;
-	while(s < es && strchr(whitespace, *s))
+	while(s < es && strchr(WHITESPACES, *s))
 		s++;
 	if(q)
 		*q = s;
@@ -38,6 +37,7 @@ int	gettoken(char **ps, char *es, char **q, char **eq)
 		case ';':
 		case '&':
 		case '<':
+		case '\'':
 			s++;
 			break;
 		case '>':
@@ -49,14 +49,14 @@ int	gettoken(char **ps, char *es, char **q, char **eq)
 			break;
 		default:
 			ret = 'a';
-			while(s < es && !strchr(whitespace, *s) && !strchr(symbols, *s))
+			while(s < es && !strchr(WHITESPACES, *s) && !strchr(SYMBOLS, *s))
 				s++;
 			break;
 	}
 	if(eq)
 		*eq = s;
 
-	while(s < es && strchr(whitespace, *s))
+	while(s < es && strchr(WHITESPACES, *s))
 		s++;
 	*ps = s;
 	return ret;
@@ -67,7 +67,7 @@ int	peek(char **ps, char *es, char *toks)
 	char *s;
 
 	s = *ps;
-	while(s < es && strchr(whitespace, *s))
+	while(s < es && strchr(WHITESPACES, *s))
 		s++;
 	*ps = s;
 	return *s && strchr(toks, *s);

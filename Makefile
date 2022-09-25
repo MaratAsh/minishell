@@ -30,7 +30,7 @@ FLDR_O_BTIN = objs/executor/built-in/
 FLDR_O_UTIL = objs/utils/
 
 SRCS      =   main.c
-SRCS_EXEC =   executor.c     exec.c         pipe.c
+SRCS_EXEC =   executor.c     exec.c         pipe.c         list.c
 SRCS_PARS =   constructors.c parser.c       utils.c
 SRCS_BTIN =   env.c          exit.c
 SRCS_UTIL =   env_edit.c     env_get.c      env_insert.c   exit_alert.c \
